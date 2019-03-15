@@ -7,7 +7,24 @@ from matrix import *
   # height and depth dimensions.
   # ====================
 def add_box( points, x, y, z, width, height, depth ):
-    pass
+    add_edge(points,x,y,z,x+width,y,z)
+    add_edge(points,x+width,y,z,x+width,y,z+depth)
+    add_edge(points,x+width,y,z+depth,x,y,z+depth)
+    add_edge(points,x,y,z+depth,x,y,z)
+
+    y -= height
+    add_edge(points,x,y,z,x+width,y,z)
+    add_edge(points,x+width,y,z,x+width,y,z+depth)
+    add_edge(points,x+width,y,z+depth,x,y,z+depth)
+    add_edge(points,x,y,z+depth,x,y,z)
+    y+= height
+
+    //corners up
+    add_edge(points,x,y,z,x,y-height,z)
+    add_edge(points,x+width,y,z,x+width,y-height,z)
+    add_edge(points,x+width,y,z+depth,x+width,y-height,z+depth)
+    add_edge(points,x,y,z+depth,x,y-height,z+depth)
+
 
   # ====================
   # Generates all the points along the surface
@@ -16,7 +33,14 @@ def add_box( points, x, y, z, width, height, depth ):
   # Returns a matrix of those points
   # ====================
 def generate_sphere( points, cx, cy, cz, r, step ):
-    pass
+    interval = 0
+    mat = []
+    while interval < 1:
+
+        interval+=step
+
+
+
 
   # ====================
   # adds all the points for a sphere with center 
