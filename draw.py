@@ -76,7 +76,7 @@ def generate_torus( points, cx, cy, cz, r0, r1, step ):
         while i < .5:
             x = math.cos(2*math.pi * interval) * (r0*math.cos(2*math.pi * i) + r1) + cx
             y = r0*math.sin(2*math.pi * i) + cy
-            z = -1*math.sin(2*math.pi * interval) * (r0*math.cos(2*math.pi * i) + r1) + cz
+            z = (math.sin(2*math.pi * interval) * (r0*math.cos(2*math.pi * i) + r1) + cz) * -1
             mat.append([x,y,z,1])
             i+=step
         interval+=step
