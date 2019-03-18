@@ -36,12 +36,18 @@ def generate_sphere( points, cx, cy, cz, r, step ):
     interval = 0
     mat = []
     while interval < 1:
-
+		i = 0
+		while i < .5:
+            x = r*math.cos(2*math.pi * i) + cx
+            y = r*math.sin(2*math.pi * i) * math.cos(2*math.pi * interval) + cy
+            z = r*math.sin(2*math.pi * i) * math.sin(2*math.pi * interval) + cz
+			mat.add_point(mat,x,y,z)
+			i+=step
         interval+=step
+	return mat
 
 
-
-
+	
   # ====================
   # adds all the points for a sphere with center 
   # (cx, cy, cz) and radius r to points
@@ -49,7 +55,9 @@ def generate_sphere( points, cx, cy, cz, r, step ):
   # necessary points
   # ====================
 def add_sphere( points, cx, cy, cz, r, step ):
-    pass
+    mat = generate_sphere(points,cx,cy,cz,r,step)
+	for point in mat:
+		add_edge(points,point[0],point[1],point[2],point[0]+1,point[1]+1,point[2]+1)
 
 
   # ====================
