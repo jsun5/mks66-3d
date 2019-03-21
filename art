@@ -1,0 +1,8 @@
+sphere
+20 20 20 150
+sphere
+20 20 40 150
+sphere
+20 20 0 150
+save
+img.png

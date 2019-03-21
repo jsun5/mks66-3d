@@ -34,16 +34,16 @@ def add_box( points, x, y, z, width, height, depth ):
   # ====================
 def generate_sphere( points, cx, cy, cz, r, step ):
     interval = 0
-    mat = [[cx+r,cy,cz,1]]
-    while interval < 1:
+    mat = []
+    while interval < step:
         i = 0
-        while i < .5:
-            x = r*math.cos(2*math.pi * i) + cx
-            y = r*math.sin(2*math.pi * i) * math.cos(2*math.pi * interval) + cy
-            z = r*math.sin(2*math.pi * i) * math.sin(2*math.pi * interval) + cz
+        while i < step:
+            x = r*math.cos(2*math.pi * i / step) + cx
+            y = r*math.sin(2*math.pi * i / step) * math.cos(math.pi * interval / step) + cy
+            z = r*math.sin(2*math.pi * i / step) * math.sin(math.pi * interval / step) + cz
             mat.append([x,y,z,1])
-            i+=step
-        interval+=step
+            i+=1
+        interval+=1
     return mat
 
 
@@ -59,8 +59,8 @@ def add_sphere( points, cx, cy, cz, r, step ):
     for point in mat:
         add_edge(points,point[0],point[1],point[2],point[0]+1,point[1]+1,point[2]+1)
 
-		
-		
+        
+        
 
   # ====================
   # Generates all the points along the surface
@@ -70,16 +70,18 @@ def add_sphere( points, cx, cy, cz, r, step ):
   # ====================
 def generate_torus( points, cx, cy, cz, r0, r1, step ):
     interval = 0
-    mat = [[cx+r0+r1,cy,cz+c1]]
-    while interval < 1:
+    mat = []
+    while interval < step:
         i = 0
-        while i < .5:
-            x = math.cos(2*math.pi * interval) * (r0*math.cos(2*math.pi * i) + r1) + cx
-            y = r0*math.sin(2*math.pi * i) + cy
-            z = (math.sin(2*math.pi * interval) * (r0*math.cos(2*math.pi * i) + r1) + cz) * -1
+        p = 2*math.pi*interval/step
+        while i < step:
+            t = 2*math.pi*i/step
+            x = math.cos(p) * (r0 * math.cos(t) + r1) + cx
+            y = r0*math.sin(t) + cy
+            z = -math.sin(p) * (r0 * math.cos(t) + r1) + cz
             mat.append([x,y,z,1])
-            i+=step
-        interval+=step
+            i+=1
+        interval+=1
     return mat
 
 
