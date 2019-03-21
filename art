@@ -1,8 +1,35 @@
 sphere
-20 20 20 150
+0 0 0 200
+torus
+0 0 0 20 140
+box
+0 0 0 40 50 60
+box
+-20 -20 0 50 60 70
+ident
+rotate
+x 20
+rotate
+y 40
+move
+150 150 0
+apply
+ident
 sphere
-20 20 40 150
-sphere
-20 20 0 150
+0 0 0 120
+torus
+0 0 0 10 70
+box
+0 0 0 20 20 20
+box
+-20 -20 0 20 20 20
+ident
+rotate
+x 60
+rotate
+y 80
+move
+260 260 0
+apply
 save
 img.png

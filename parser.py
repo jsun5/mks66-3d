@@ -54,7 +54,7 @@ def parse_file( fname, edges, transform, screen, color ):
     f = open(fname)
     lines = f.readlines()
 
-    step = 50
+    step = 75
 
     c = 0
     while c < len(lines):
